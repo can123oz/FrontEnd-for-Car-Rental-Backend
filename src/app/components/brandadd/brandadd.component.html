@@ -1,0 +1,10 @@
+
+<div class="mt-3">
+    <form [formGroup]="brandForm">
+        <div class="form-group">
+            <label for="name"></label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Brand Name">
+        </div>
+        <button class="btn btn-primary" (click)="addBrand()">Add Brand</button>
+    </form>
+</div>

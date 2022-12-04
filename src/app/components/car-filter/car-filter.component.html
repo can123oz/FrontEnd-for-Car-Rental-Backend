@@ -1,0 +1,36 @@
+<!-- 
+<form [formGroup]="myForm"  (ngSubmit)="getFilteredCars()">
+    <div>
+        <div class="mt-3">
+            <select class="form-select">
+                <option [ngValue]="null" selected>Select Color</option>
+                <option *ngFor="let color of colors" [ngModel]="selectedColor">{{color.name}}</option>
+            </select>
+        </div>
+        <div class="mt-3">
+            <select class="form-select">
+                <option [ngValue]="null" selected>Select Brand</option>
+                <option *ngFor="let brand of brands" [ngValue]="brand">{{brand.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary mt-4" type="submit">Apply Filter</button>
+    </div>
+</form> -->
+
+<div class="mt-3">
+    <select [(ngModel)]="selectedColor" name="selectedColor" class="form-select">
+        <option selected>Select Color</option>
+        <option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
+    </select>
+</div>
+<div class="mt-3">
+    <select [(ngModel)]="selectedBrand" name="selectedBrand" class="form-select">
+        <option selected>Select Brand</option>
+        <option *ngFor="let brand of brands" [ngValue]="brand">{{brand.name}}</option>
+    </select>
+</div>
+<div>
+    <button class="btn btn-primary mt-4" type="button" (click)="getFilteredCars()">Apply Filter</button>
+</div>

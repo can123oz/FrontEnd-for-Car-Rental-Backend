@@ -1,0 +1,10 @@
+
+<div class="mt-3">
+    <form [formGroup]="colorForm">
+        <div class="form-group">
+            <label for="name">Color Name</label>
+            <input class="form-control" formControlName="name" type="text" placeholder="Color name">
+        </div>
+        <button class="btn btn-primary" (click)="addColor()">Add Color</button>
+    </form>
+</div>

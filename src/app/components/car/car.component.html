@@ -1,17 +1,43 @@
+<app-car-filter (brandSender)="recieveBrand($event)" (colorSender)="recieveColor($event)"></app-car-filter>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Brand</th>
-            <th>Color</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tr *ngFor="let car of carDetails">
-        <td>{{car.carName}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.dailyPrice}}</td>
-    </tr>
-</table>
+
+<div class="outDiv mt-3">
+    <div class="secondDiv">
+        <div class="searchLabel mt-3"> 
+            <label class="form-label" for="brandFilter">Search Brand</label> 
+            <input class="form-control" type="text" [(ngModel)]="brandFilter">
+        </div>
+        <div class="searchLabel mt-3"> 
+            <label class="form-label" for="colorFilter">Search Color</label>
+            <input class="form-control" type="text" [(ngModel)]="colorFilter">
+        </div>
+        <div class="searchLabel mt-3">
+            <label class="form-label" for="carNameFilter">Search Car</label>
+            <input class="form-control" type="text" [(ngModel)]="carNameFilter">
+        </div>
+        <div class="mt-3">
+            <button routerLink="cars/add" class="btn btn-primary">Add Car</button>
+        </div>
+    </div>
+    <div class="secondDiv">
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Model</th>
+                    <th>Brand</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let car of carDetails |brand:brandFilter |color:colorFilter |car:carNameFilter |filter:selectedColor:selectedBrand"
+            routerLink="/cars/cardetail/{{car.id}}">
+                <td>{{car.carName}}</td>
+                <td>{{car.describtion}}</td>
+                <td>{{car.brandName}}</td>
+                <td>{{car.colorName}}</td>
+                <td>{{car.dailyPrice}} ₺</td>
+            </tr>
+        </table>    
+    </div>
+</div>

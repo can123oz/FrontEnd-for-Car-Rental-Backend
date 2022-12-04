@@ -3,7 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { CarDetail } from 'src/app/models/carDetail';
 import { Color } from 'src/app/models/color';
+import { BrandServiceService } from 'src/app/services/brand-service.service';
 import { CarServiceService } from 'src/app/services/car-service.service';
+import { ColorService } from 'src/app/services/color.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-car',
@@ -13,6 +16,12 @@ import { CarServiceService } from 'src/app/services/car-service.service';
 export class CarComponent implements OnInit {
   
   carDetails : CarDetail[] = [];
+  brandFilter : string = "";
+  colorFilter : string = "";
+  carNameFilter : string = "";
+  selectedColor:Color = {id:0, name:""};
+  selectedBrand:Brand = {id:0, name:""};
+  
 
   constructor(private carService:CarServiceService, private activatedRoute: ActivatedRoute) { }
 
@@ -45,7 +54,20 @@ export class CarComponent implements OnInit {
     console.log(brandId);
     this.carService.getCarsByBrand(brandId).subscribe(response => {
       this.carDetails = response.data;
+    },errorResponse => {
+      console.log(errorResponse.error.message);
     })
+  }
+
+
+  recieveColor($event:Color) {
+    console.log($event);
+    this.selectedColor = $event;
+  }
+
+  recieveBrand($event:Brand) {
+    console.log($event);
+    this.selectedBrand = $event;
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { BrandServiceService } from 'src/app/services/brand-service.service';
 
@@ -10,7 +11,7 @@ import { BrandServiceService } from 'src/app/services/brand-service.service';
 })
 export class BrandComponent implements OnInit {
 
-  constructor(private brandService:BrandServiceService) { }
+  constructor(private brandService:BrandServiceService, private toastrService:ToastrService) { }
 
   brands:Brand[]=[];
   currentBrand: Brand;
@@ -34,6 +35,7 @@ export class BrandComponent implements OnInit {
   } 
 
   setCurrentBrand(brand : Brand) {
+    this.toastrService.success("selected" , brand.name);
     this.currentBrand = brand;
   }
 

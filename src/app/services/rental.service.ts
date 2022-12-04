@@ -3,21 +3,29 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { RentalDetail } from '../models/rentalDetail';
-import { Rental } from '../models/rentals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalService {
 
-  getAllRentalUrl:string = "https://localhost:44349/api/Rentals/GetAll";
-
-  getAllRentalDetailsUrl:string = "https://localhost:44349/api/Rentals/GetRentalDetail";
-
+  baseUrl:string = "https://localhost:44349/api/";
+ 
   constructor(private htppClient:HttpClient) { }
   
   getAllDetails() : Observable<ListResponseModel<RentalDetail>> {
-    return this.htppClient.get<ListResponseModel<RentalDetail>>(this.getAllRentalDetailsUrl);
+    let newUrl : string = this.baseUrl + "Rentals/GetRentalDetail";
+    return this.htppClient.get<ListResponseModel<RentalDetail>>(newUrl);
+  }
+
+  getCarStatus(carId : number) :Observable<boolean> {
+    let newUrl : string = this.baseUrl + "Rentals/CarStatus?carId="+carId;
+    return this.htppClient.get<boolean>(newUrl);
+  }
+
+  returnCar(carId: number, userId:number) :Observable<any> {
+    let newUrl : string = this.baseUrl + "Rentals/returncar";
+    return this.htppClient.post(newUrl,{carId:carId,userId:userId});
   }
 
 }
