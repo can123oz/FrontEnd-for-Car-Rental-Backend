@@ -1,19 +1,27 @@
 <form [formGroup]="carForm">
     <div>
-        <label for=""></label>
-        <input type="text">
+        <label class="form-label" for="name">Car Name</label>
+        <input formControlName="name" class="form-control" type="text">
     </div>
     <div>
-        <label for=""></label>
-        <input type="text">
+        <label class="form-label" for="colorId">Color</label>
+
     </div>
     <div>
-        <label for="dailyPrice">Price</label>
-        <input type="number">
+        <label class="form-label" for="brandId">Brand</label>
+
     </div>
     <div>
-        <label for="modelYear">Model Year</label>
-        <input type="text">
+        <label class="form-label" for="dailyPrice">Price</label>
+        <input formControlName="dailyPrice" class="form-control" type="number">
     </div>
-    <button>Add Car</button>
+    <div>
+        <label class="form-label" for="modelYear">Model Year</label>
+        <input formControlName="modelYear" class="form-control" type="number">
+    </div> 
+    <div>
+        <label class="form-label" for="description">Description</label>
+        <input formControlName="description" type="text">
+    </div>
+    <button (click)="addCar()" class="btn btn-primary">Add Car</button>
 </form>

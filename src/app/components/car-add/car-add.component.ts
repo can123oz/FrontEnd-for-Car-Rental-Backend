@@ -37,6 +37,10 @@ export class CarAddComponent implements OnInit {
     })
   }
 
+  addCar() {
+    let car = this.carForm.value;
+    console.log(car);
+  }
 
   
 

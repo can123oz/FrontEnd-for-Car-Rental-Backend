@@ -30,6 +30,12 @@ export class ColorAddComponent implements OnInit {
 
   addColor() {
     let color = this.colorForm.value;
-    //this.colorService.addColor(color).subscribe( response => console.log(response));
+    this.colorService.addColor(color).subscribe( response => {
+      console.log(response);
+      this.toestr.success("Color Added",color.name);      
+    }, errorResponse => {
+      console.log(errorResponse);
+      this.toestr.error("Cant Add right now");
+    });
   }
 }
