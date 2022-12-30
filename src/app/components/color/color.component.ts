@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color.service';
@@ -8,11 +8,15 @@ import { ColorService } from 'src/app/services/color.service';
   templateUrl: './color.component.html',
   styleUrls: ['./color.component.css']
 })
+
 export class ColorComponent implements OnInit {
 
   colors: Color[]=[];
   currentColor : Color;
-  constructor(private ColorService:ColorService, private toastrService : ToastrService) { }
+  colorForChild:Color;
+
+  constructor(private ColorService:ColorService, private toastrService : ToastrService,
+    private cdr:ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getColors();
@@ -26,6 +30,7 @@ export class ColorComponent implements OnInit {
 
   setCurrentColor(color:Color) {
     this.currentColor = color;
+    this.colorForChild = color;
     this.toastrService.success("Color Selected", color.name);
   }
 
@@ -36,5 +41,15 @@ export class ColorComponent implements OnInit {
       return "";
     }
   }
+
+  bindColor(color:Color) {
+    console.log(color);
+    this.colorForChild = color;
+    console.log(this.colorForChild);
+    this.cdr.detectChanges();
+  }
+
+
+
 
 }

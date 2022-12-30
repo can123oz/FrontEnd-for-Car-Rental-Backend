@@ -3,10 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { CarDetail } from 'src/app/models/carDetail';
 import { Color } from 'src/app/models/color';
-import { BrandServiceService } from 'src/app/services/brand-service.service';
 import { CarServiceService } from 'src/app/services/car-service.service';
-import { ColorService } from 'src/app/services/color.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-car',

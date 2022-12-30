@@ -6,7 +6,7 @@ import { CarDetail } from '../models/carDetail';
 import { CarImage } from '../models/carImage';
 import { DetailResponseModel } from '../models/detailResponseModel';
 import { ListResponseModel } from '../models/listResponseModel';
-import { ResponseModel } from '../models/responsemodel';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'

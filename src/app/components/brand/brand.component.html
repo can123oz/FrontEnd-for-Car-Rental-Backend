@@ -4,17 +4,23 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Operations</th>
         </tr>
     </thead>
     <tr routerLink="/cars" [class]="getAllBrandsByClass()" ><td></td><td>All Brands</td></tr>
     <tr *ngFor="let brand of brands" 
-    routerLink="/cars/brand/{{brand.id}}"
     [class]="getCurrentBrand(brand)"
     (click)="setCurrentBrand(brand)">
         <td>{{brand.id}}</td>
         <td>{{brand.name}}</td>
+        <td><a class="btn btn-secondary" routerLink="/brand/update">Update</a></td> 
     </tr>
+<!-- routerLink="/cars/brand/{{brand.id}}" -->
 </table>
 <div>
     <button routerLink="brand/add" class="btn btn-secondary">Add Brand</button>
+</div>
+
+<div *ngIf="brandForChildBool">
+    <app-brand-edit [brand222]="currentBrand"></app-brand-edit>
 </div>

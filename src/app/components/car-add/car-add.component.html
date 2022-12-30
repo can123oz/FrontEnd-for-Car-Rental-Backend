@@ -1,27 +1,33 @@
 <form [formGroup]="carForm">
     <div>
-        <label class="form-label" for="name">Car Name</label>
+        <label class="form-label mt-3" for="name">Car Name</label>
         <input formControlName="name" class="form-control" type="text">
     </div>
     <div>
-        <label class="form-label" for="colorId">Color</label>
-
+        <label class="form-label mt-3" for="colorId">Color</label>
+        <select class="form-select" formControlName="colorId">
+            <option selected>Colors</option>
+            <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
+        </select>
     </div>
     <div>
-        <label class="form-label" for="brandId">Brand</label>
-
+        <label class="form-label mt-3" for="brandId">Brand</label>
+        <select class="form-select" formControlName="brandId">
+            <option selected>Brands</option>
+            <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
+        </select>
     </div>
     <div>
-        <label class="form-label" for="dailyPrice">Price</label>
+        <label class="form-label mt-3" for="dailyPrice">Price</label>
         <input formControlName="dailyPrice" class="form-control" type="number">
     </div>
     <div>
-        <label class="form-label" for="modelYear">Model Year</label>
+        <label class="form-label mt-5" for="modelYear">Model Year</label>
         <input formControlName="modelYear" class="form-control" type="number">
     </div> 
     <div>
-        <label class="form-label" for="description">Description</label>
-        <input formControlName="description" type="text">
+        <label class="form-label mt-5" for="description">Description</label>
+        <input formControlName="description" class="form-control" type="text">
     </div>
-    <button (click)="addCar()" class="btn btn-primary">Add Car</button>
+    <button (click)="addCar()" class="btn btn-primary mt-1">Add Car</button>
 </form>

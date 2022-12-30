@@ -30,9 +30,9 @@ export class CardetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       console.log(params["carId"]);
-      this.getCarDetailById(params["carId"])
-      this.getCarImagesById(params["carId"])
       this.carId = params["carId"];
+      this.getCarDetailById(this.carId)
+      this.getCarImagesById(this.carId)
       this.getCarStatus(this.carId);
     })
     this.userId = Math.floor(Math.random() * 100);

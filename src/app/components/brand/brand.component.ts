@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { BrandServiceService } from 'src/app/services/brand-service.service';
@@ -15,9 +14,13 @@ export class BrandComponent implements OnInit {
 
   brands:Brand[]=[];
   currentBrand: Brand;
+  brandForChildBool:Boolean = false;
+
+  @Input() brandForChild : Brand;
 
   ngOnInit(): void {
     this.getBrands();
+    //this.sendToParent(this.brands);
   }
 
   getBrands() {
@@ -35,8 +38,12 @@ export class BrandComponent implements OnInit {
   } 
 
   setCurrentBrand(brand : Brand) {
+    console.log(this.brandForChild);
     this.toastrService.success("selected" , brand.name);
     this.currentBrand = brand;
+    this.brandForChild = brand;
+    this.brandForChildBool = true;
+    console.log(this.brandForChild);
   }
 
   getAllBrandsByClass() {
@@ -47,5 +54,10 @@ export class BrandComponent implements OnInit {
     } 
   }
 
+/*   @Output() brandToParent = new EventEmitter<Brand[]>();
+
+  sendToParent(value: Brand[]) {
+    this.brandToParent.emit(value);
+  } */
 
 }

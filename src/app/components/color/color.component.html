@@ -4,15 +4,24 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Opetaions</th>
         </tr>
     </thead>
     <tr routerLink="/cars" [class]=""><td></td><td>All Colors</td></tr>
     <tr
-    [class]="getCurrentColor(color)"
-    (click)="setCurrentColor(color)"
-    routerLink="/cars/color/{{color.id}}" 
+
     *ngFor="let color of colors">
         <td>{{color.id}}</td>
-        <td>{{color.name}}</td>
+        <td [class]="getCurrentColor(color)" (click)="setCurrentColor(color)"
+        routerLink="/cars/color/{{color.id}}">{{color.name}}</td>
+        <td><button  (click)="bindColor(color)" >Update</button></td>
     </tr>
 </table>
+
+<div>
+    <button routerLink="color/add" class="btn btn-secondary mt-3">Add Color</button>
+</div>
+
+<div *ngIf="colorForChild">
+    <app-color-update [incomingColor]="colorForChild"></app-color-update>
+</div>

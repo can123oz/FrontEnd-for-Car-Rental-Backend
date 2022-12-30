@@ -23,6 +23,9 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { BrandaddComponent } from './components/brandadd/brandadd.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { BrandEditComponent } from './components/brand/brand-edit/brand-edit.component';
+import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
     BrandaddComponent,
     CarAddComponent,
     ColorAddComponent,
+    PageNotFoundComponent,
+    BrandEditComponent,
+    ColorUpdateComponent,
   ],
   imports: [
     BrowserModule,
